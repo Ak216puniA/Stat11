@@ -125,7 +125,7 @@ export default function MediaCard(props) {
             <br/><br/>
 
           </Typography>
-          {result};
+          {result}
       </CardContent>
         
     </Card>
