@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/home';
 import Auth from './pages/auth';
 import MediaCard from './components/cards/card';
+import Homepage from './pages/homepage';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route 
         path={`/auth`}
         element={<Auth />}
+        />
+        <Route 
+        path={`/page`}
+        element={<Homepage />}
         />
         <Route 
         path={`/card`}
