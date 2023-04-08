@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Auth from './pages/auth';
 import MediaCard from './components/cards/card';
 import Homepage from './pages/homepage';
+import Highlights from './scoreboard/highlights';
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         <Route 
         path={`/page`}
         element={<Homepage />}
+        />
+        <Route 
+        path={`/high`}
+        element={<Highlights />}
         />
         <Route 
         path={`/card`}

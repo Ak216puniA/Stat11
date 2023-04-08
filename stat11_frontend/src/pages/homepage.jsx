@@ -5,6 +5,15 @@ import { Box, Button, Typography } from '@mui/material'
 import MediaCard from '../components/cards/card';
 
 function Homepage() {
+
+    // const data = {
+    //     {
+    //         team1: {
+
+    //         }
+    //     }
+    // }
+
     return(<div>
         <Typography component='box'
         sx={{
