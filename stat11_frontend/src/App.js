@@ -6,6 +6,8 @@ import Auth from './pages/auth';
 import MediaCard from './components/cards/card';
 import Homepage from './pages/homepage';
 import Highlights from './scoreboard/highlights';
+import CreateNewTeamDialogBox from './components/dialogBoxes/createNewTeam';
+import DisplayTeams from './pages/displayTeams';
 
 function App() {
   return (
@@ -24,8 +26,16 @@ function App() {
         element={<Auth />}
         />
         <Route 
+        path={`/team`}
+        element={<DisplayTeams />}
+        />
+        <Route 
         path={`/page`}
         element={<Homepage />}
+        />
+        <Route 
+        path={`/xxx`}
+        element={<CreateNewTeamDialogBox/>}
         />
         <Route 
         path={`/high`}

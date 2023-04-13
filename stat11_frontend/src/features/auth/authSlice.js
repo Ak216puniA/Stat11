@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BackendClient from "../../BackendClient";
 import { loginBackendUrl, signupBackendUrl } from "../../urls";
 
-const initialState = {
+const initialState = {   
     loading: false,
     error: false,
     onLogin: true,

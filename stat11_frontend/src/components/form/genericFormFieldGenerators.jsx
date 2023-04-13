@@ -37,7 +37,7 @@ export const textFormFieldGenerator = (label, stateVar ,setStateVar, error = () 
         textFieldChangeHandler(setStateVar)
       }
       sx={{
-        margin: "0.8rem 0"
+        margin: "0.8rem 0"       
       }}
       />
     )
@@ -56,6 +56,32 @@ export const checkBoxFormFieldGenerator = (label, stateVar, setStateVar) => {
             />
         }
         />
+    )
+}
+
+export const textFormFieldGenerator1 = (label, stateVar ,setStateVar, error = () => true, errorText) => {
+    let err = !error()
+
+    return (
+      <TextField 
+      required={true}
+      label={label} 
+      type='text' 
+      placeholder={label} 
+      value={stateVar}
+      variant='outlined'
+      fullWidth={true}
+      color='hint'
+      error={err}
+      helperText={err ? errorText : ''}
+      onChange={
+        textFieldChangeHandler(setStateVar)
+      }
+      sx={{
+        margin: "0.8rem 0",
+        width: "30vw",
+      }}
+      />
     )
 }
 
