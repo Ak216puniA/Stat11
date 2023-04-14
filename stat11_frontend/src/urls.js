@@ -15,3 +15,11 @@ export const loginBackendUrl = () => {
 export const signupBackendUrl = () => {
     return `${baseBackendUrl()}auth/signup/`
 }
+
+export const teamUrl = () => {
+    return `${baseBackendUrl()}batter_scoreboard/`
+}
+
+export const matchUrl = () => {
+    return `${baseBackendUrl()}match/`
+}

@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "theme.primary.main",
+      backgroundColor: "#448791",
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

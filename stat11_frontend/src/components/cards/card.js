@@ -10,7 +10,7 @@ import { display } from '@mui/system';
 <MediaCard team1 = "Blue" team1college = "IIT Roorkee"></MediaCard>
 export default function MediaCard(props) {
     var winteam = (props.team1runs<props.team2runs)? props.team2:props.team1;
-    console.log(winteam);
+    //console.log(winteam);
     const winner = <Box component={'span'}
             sx={{
                 display:'inline-flex',
@@ -35,9 +35,9 @@ export default function MediaCard(props) {
     
     const cooin= <Box component="img" src={coin} sx={{width: '20px', height: '20px'}}/>
     const toss2 = ( props.toss === "1")? '':cooin;
-    console.log(toss2);
+    //console.log(toss2);
     const toss1 = ( props.toss === "1")? cooin:'';
-    console.log(toss1);
+    //console.log(toss1);
     return (
     <div style={{padding:20 }}>
     <Card sx={{ 

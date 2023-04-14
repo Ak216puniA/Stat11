@@ -1,11 +1,15 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, useEffect } from 'react-redux'
 import { Box, Button, Typography } from '@mui/material'
 import MediaCard from '../components/cards/card';
-import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
+import Tryy from './try';
+import {connect} from 'react-redux'
+import { updateteam1runs, updateteam2runs, teamData } from '../features/card/cardSlice'
+
 
 function Home() {
-    const authState = useSelector(state => state.auth)
+    const cardState = useSelector(state => state.card)
     const dispatch = useDispatch()
 
     // if(true){
@@ -16,6 +20,25 @@ function Home() {
     //     return <Navigate to={`/auth`} replace={true} />
     // }
 
+    const team1Runs = () => {
+        dispatch(
+          updateteam1runs()
+        )
+    }
+
+    const team2Runs = () => {
+        dispatch(
+          updateteam2runs()
+        )
+    }
+
+    const hehe = () => {
+        dispatch(
+          teamData()
+        )
+    }
+    // console.log(hehe)
+
     return(<div>
         <Typography component='box'
         sx={{
@@ -25,7 +48,8 @@ function Home() {
             paddingTop:'80px',
             paddingBottom:'10px',
         }}>
-            Welcome Back!  
+             Welcome Back!   
+            {/* {<Tryy />} */}
         </Typography>
         {/* <Typography component='box' sx={{backgroundColor:theme.primary}}>   */}
         <Typography component='box'>
@@ -52,7 +76,7 @@ function Home() {
         {[...Array(10)].map((_, index) => (
         <Box>
             <MediaCard team1 = "Blue" team2="Purple" 
-            team1runs = {147} team2runs = {152}
+            team1runs = {team1Runs} team2runs = {team2Runs}
             team1college = "IIT Roorkee" team2college="IIT Kharagpur"
             toss = "1" matchover = "1" winner ="Blue"
             team1wickets = "02" team2wickets = "03"
