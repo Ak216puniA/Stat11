@@ -1,13 +1,13 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Divider } from "@mui/material";
 
 export default function Header() {
   return (
     <div>
       <Typography
         component="box"
+        variant="h3"
         sx={{
-          fontSize: "32px",
           float: "left",
           paddingLeft: "30px",
           paddingTop: "72px",
@@ -17,10 +17,10 @@ export default function Header() {
         Purple Team v/s Orange Team
         <br />
         <Typography
+          variant="body1"
           component="box"
           sx={{
             color: "#448791",
-            fontSize: "20px",
             float: "left",
           }}
         >
@@ -28,9 +28,10 @@ export default function Header() {
         </Typography>
         <Typography
           component="box"
+          variant="body1"
           sx={{
             color: "#797979",
-            fontSize: "20px",
+
             float: "left",
           }}
         >
@@ -41,9 +42,9 @@ export default function Header() {
 
       <Typography
         component="box"
+        variant="body2"
         sx={{
           color: "#797979",
-          fontSize: "20px",
           textAlign: "right",
           paddingTop: "80px",
           paddingRight: "160px",
@@ -55,9 +56,13 @@ export default function Header() {
         Purple Team
       </Typography>
 
-      <Typography component="box" sx={{ backgroundColor: "#D9D9D9" }}>
-        <hr style={{ width: "96vw" }} />
-      </Typography>
+      <Divider
+        sx={{
+          color: "#D9D9D9",
+          width: "96vw",
+          marginLeft: "30px",
+        }}
+      />
     </div>
   );
 }
