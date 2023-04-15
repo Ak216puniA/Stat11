@@ -7,6 +7,7 @@ import UpdateScore from './pages/updateScore';
 import MainScorecard from './pages/mainScorecard';
 import DisplayTeams from './pages/displayTeams';
 import Match from './pages/match';
+import Analytics from './pages/analytics';
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
           <Route 
           path={`updateScore`}
           element={<UpdateScore />}
+          />
+          <Route 
+          path={`analytics`}
+          element={<Analytics />}
           />
         </Route>
        

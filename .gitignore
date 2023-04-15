@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 .python-version
 /env
 .DS_Store
 dump.rdb
 /manv
+=======
+.python-version
+/env
+.DS_Store
+dump.rdb
+>>>>>>> 01d9dff (complete analytics UI)
