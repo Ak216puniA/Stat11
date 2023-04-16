@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+
+import { Box, Button, Divider, Link} from '@mui/material';
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 // import DialogActions from "@mui/material/DialogActions";
@@ -47,14 +47,31 @@ function CreateNewTeamDialogBox() {
       open={closeD}
       onClose={handleCloseCreateTeamDialog}
     >
+        <Box
+    sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        flexGrow: 1,
+        
+    }}
+    >
       <DialogTitle>Create New Team</DialogTitle>
       <DialogContent>
-        {textFormFieldGenerator1(
-          "Team Name:",
+      {textFormFieldGenerator1(
+          "Team Name",
           initialState.newTeamName,
           setNewTeamName
         )}
+        
+        
         <br />
+        {textFormFieldGenerator1(
+          "College Name",
+          initialState.newTeamName,         //Change the Variables for college name 
+          setNewTeamName
+        )}
         <br />
 
         <Button
@@ -64,17 +81,26 @@ function CreateNewTeamDialogBox() {
           disableElevation={true}
           disabled={false}
           sx={{
-            borderRadius: 8,
+            
+            fontSize: "18px",             
+                         
+            marginTop: 3,
+            marginBottom: 3,
+            display: "flex",
+            
             // width: "20px",
           }}
         >
-          <Typography variant="button">Upload flag</Typography>
+          <Typography variant="button"
+            sx={{
+              fontSize: "18px",             
+            }}>Upload flag Image</Typography>
           <input type="file" hidden />
         </Button>
         <br />
-        <br />
+     
 
-        {/* {textFormFieldGenerator("Add Player:", playerName, setPlayerName)} */}
+      
         {playerTypeFormField}
         <Button
           variant="contained"
@@ -82,13 +108,27 @@ function CreateNewTeamDialogBox() {
           disableElevation={true}
           disabled={false}
           sx={{
-            borderRadius: 8,
-            // width: "20%",
+            mx: 'auto',
+            
+            
+            width: 200,
+            marginTop: 3,
+            marginBottom: 3,
+            display: "flex",
+              borderRadius: 8,
           }}
         >
-          <Typography variant="button">Submit</Typography>
+          <Typography variant="button"
+          sx={{
+            fontSize: "18px",
+            
+            
+          
+           
+          }}>Submit</Typography>
         </Button>
       </DialogContent>
+      </Box>
     </Dialog>
   );
 }

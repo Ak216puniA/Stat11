@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
-  newTeamName: '',
-  teamFlag: '',
-  newPlayerName: '',
-}
+  newTeamName: "",
+  teamFlag: "",
+  newPlayerName: "",
+};
 
 const createTeamSlice = createSlice({
-  name: 'createTeamSlice',
+  name: "createTeamSlice",
   initialState,
   reducers: {
     setNewTeamName: (state, action) => {
@@ -25,5 +25,6 @@ const createTeamSlice = createSlice({
   },
 });
 
-export const { setNewPlayerName, setNewTeamName, setTeamFlag } = createTeamSlice.actions;
+export const { setNewPlayerName, setNewTeamName, setTeamFlag } =
+  createTeamSlice.actions;
 export default createTeamSlice.reducer;
