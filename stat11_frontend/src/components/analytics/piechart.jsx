@@ -1,7 +1,8 @@
+import React from "react";
 import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
+
 export default function PieChart() {
-    
   const data = {
     labels: ["a", "b", "c", "d", "e", "f"],
     datasets: [
@@ -23,9 +24,7 @@ export default function PieChart() {
   };
   return (
     <div>
-      <Pie
-        data={data}
-      ></Pie>
+      <Pie data={data}></Pie>
     </div>
   );
 }
