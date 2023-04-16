@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Header from "../components/header";
+import { headerData } from "../features/header/headerSlice";
 
 function Help() {
   const authState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(headerData());
+  }, []);
+  
   return (
     <>
+      <Header />
       <Box
         sx={{
           //width: "100vw",

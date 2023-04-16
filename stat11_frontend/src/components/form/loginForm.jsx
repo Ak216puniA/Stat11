@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Box, Button, Divider, Link, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { textFormFieldGenerator } from '../genericComponent/genericFormFieldGenerators'
+import { textFormFieldGenerator } from '../GenericComponent/genericFormFieldGenerators'
 import { loginUser } from '../../features/auth/authSlice'
 import { changeSideBarTabsType, switchSideBarTab } from '../../features/sideBar/sideBarSlice'
 

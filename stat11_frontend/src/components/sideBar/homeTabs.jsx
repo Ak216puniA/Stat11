@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { switchSideBarTab } from '../../features/sideBar/sideBarSlice'
 import { useNavigate } from 'react-router-dom'
 import { logoutUser } from '../../features/auth/authSlice'
-import { listButtonGenerator } from '../genericComponent/genericListGenerators'
+import { listButtonGenerator } from '../GenericComponent/genericListGenerators'
 
 function HomeTabs() {
     const authState = useSelector((state) => state.auth)

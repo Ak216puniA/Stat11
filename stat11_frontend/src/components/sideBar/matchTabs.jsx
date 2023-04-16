@@ -3,7 +3,7 @@ import { List } from '@mui/material'
 import matchBarTabs from '../../constants/matchBarTabs'
 import { useDispatch, useSelector } from 'react-redux'
 import { switchSideBarTab } from '../../features/sideBar/sideBarSlice'
-import { listButtonGenerator } from '../genericComponent/genericListGenerators'
+import { listButtonGenerator } from '../GenericComponent/genericListGenerators'
 
 function MatchTabs() {
     const sideBarState = useSelector((state) => state.sideBar)
