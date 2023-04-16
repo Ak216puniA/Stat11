@@ -7,8 +7,11 @@ import {
   setNewTeamName,
   setTeamFlag,
   initialState,
-} from "../features/home/createTeamSlice";
+} from "../features/home/createMatchSlice";
 import { Navigate } from "react-router-dom";
+
+import CoinTossDialogBox from "../components/dialogBoxes/coinToss";
+import CreateMatchDialogBox from "../components/dialogBoxes/createMatch";
 import CreateNewTeamDialogBox from "../components/dialogBoxes/createNewTeam";
 
 function Home() {
@@ -128,7 +131,7 @@ function Home() {
           +
         </Button>
       </Box>
-      {openDialog && <CreateNewTeamDialogBox />}
+      {openDialog && <CreateMatchDialogBox />}
     </div>
   );
 }
