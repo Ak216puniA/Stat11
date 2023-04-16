@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 .python-version
 /env
 .DS_Store
 dump.rdb
+=======
+.python-version
+/env
+.DS_Store
+dump.rdb
+/manv
+>>>>>>> d809986bab5a5a8937da62ce993c40d9e38d7f66

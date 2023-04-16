@@ -1,68 +1,63 @@
 import React from "react";
-import { Typography, Divider } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
-export default function Header() {
+export default function Header(props) {
   return (
-    <div>
+    <Box sx = {{width: "70%", ml:"25%", position: "sticky"}}>
       <Typography
         component="box"
-        variant="h3"
         sx={{
+          fontSize: "32px",
           float: "left",
           paddingLeft: "30px",
           paddingTop: "72px",
-          paddingBottom: "10px",
+          // paddingBottom: "10px",
         }}
       >
-        Purple Team v/s Orange Team
+        {props.team1Name} v/s {props.team2Name}
         <br />
         <Typography
-          variant="body1"
           component="box"
           sx={{
             color: "#448791",
+            fontSize: "20px",
             float: "left",
           }}
         >
-          Location, City, State &nbsp;
+          {props.location} &nbsp;
         </Typography>
         <Typography
           component="box"
-          variant="body1"
           sx={{
             color: "#797979",
-
+            fontSize: "20px",
             float: "left",
           }}
         >
           {" "}
-          hehe Overs
+          {props.numberOfOvers} Overs
         </Typography>
       </Typography>
 
       <Typography
         component="box"
-        variant="body2"
         sx={{
           color: "#797979",
+          fontSize: "20px",
           textAlign: "right",
           paddingTop: "80px",
-          paddingRight: "160px",
+          // paddingRight: "160px",
           float: "right",
         }}
       >
         {" "}
         Toss: <br />
-        Purple Team
+        {props.teamWhichWonTheToss}
       </Typography>
 
-      <Divider
-        sx={{
-          color: "#D9D9D9",
-          width: "96vw",
-          marginLeft: "30px",
-        }}
-      />
-    </div>
+      <Typography component="box" sx={{ backgroundColor: "#D9D9D9" }}>
+        <hr style={{ width: "100%" }} />
+      </Typography>
+    </Box>
   );
 }
