@@ -5,42 +5,43 @@ import CardContent from "@mui/material/CardContent";
 
 export default function MediaCard(props) {
   return (
-    <div>
-      <Card
+    <Card
+      sx={{
+        width: "auto",
+        maxWidth: "460px",
+        height: "auto",
+        maxHeight: "540px",
+        boxShadow: "4px 4px 4px 4px #D9D9D9",
+        borderRadius: "16px",
+        marginBottom: "40px",
+        marginRight: "40px",
+        marginTop: "40px",
+        marginLeft: "50%",
+      }}
+    >
+      <CardContent
         sx={{
-          width: "auto",
-          maxWidth: "460px",
-          height: "auto",
-          maxHeight: "540px",
-          boxShadow: "4px 4px 4px 4px #D9D9D9",
-          borderRadius: "16px",
-          margin: "40px",
+          backgroundColor: "primary.main",
+          height: "26px",
         }}
       >
-        <CardContent
+        <Typography
+          variant="h5"
+          label="heading"
+          component="box"
           sx={{
-            backgroundColor: "primary.main",
-            height: "26px",
+            color: "#FFFFFF",
+            float: "left",
+            paddingLeft: "24px",
           }}
         >
-          <Typography
-            variant="h5"
-            label="heading"
-            component="box"
-            sx={{
-              color: "#FFFFFF",
-              float: "left",
-              paddingLeft: "24px",
-            }}
-          >
-            {props.title}
-          </Typography>
-          <br />
-        </CardContent>
-        <CardContent sx={{ backgroundColor: "#FFFFFF" }}>
-          {props.chart}
-        </CardContent>
-      </Card>
-    </div>
+          {props.title}
+        </Typography>
+        <br />
+      </CardContent>
+      <CardContent sx={{ backgroundColor: "#FFFFFF" }}>
+        {props.chart}
+      </CardContent>
+    </Card>
   );
 }
