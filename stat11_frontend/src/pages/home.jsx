@@ -10,6 +10,7 @@ import {
 } from "../features/home/createMatchSlice";
 import { Navigate } from "react-router-dom";
 import CreateMatchDialogBox from "../components/dialogBoxes/createMatch";
+import CreateNewTeamDialogBox from "../components/dialogBoxes/createNewTeam";
 
 function Home() {
   const authState = useSelector((state) => state.auth);
@@ -123,12 +124,12 @@ function Home() {
               color: "#D9D9D9",
             },
           }}
-          
         >
           +
         </Button>
       </Box>
-      {openDialog && <CreateMatchDialogBox />}
+      {/* {openDialog && <CreateMatchDialogBox />} */}
+      {openDialog && <CreateNewTeamDialogBox />}
     </div>
   );
 }

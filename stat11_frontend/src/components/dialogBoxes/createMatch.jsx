@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Box, Button, Divider, Link } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
@@ -34,7 +33,7 @@ const playerTypeFormField2 = selectFormFieldGenerator(
   setNewPlayerName
 );
 
-function CreateMatchDialogBox() {
+function CreateMatchDialogBox(props) {
   const [closeD, setCloseD] = useState(true);
   const dispatch = useDispatch();
 
