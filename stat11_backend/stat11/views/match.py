@@ -16,3 +16,5 @@ class MatchModelViewSet(viewsets.ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return MatchNestedSerializer
         return MatchSerializer
+    
+    # get_match_info_teams(1)

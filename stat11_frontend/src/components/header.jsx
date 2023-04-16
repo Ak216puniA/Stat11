@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Typography, Divider } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { headerData, teamData } from "../features/header/headerSlice";
-import get_match_info_teams from "";
+
 export default function Header(props) {
-  const headerState = useSelector((state) => state.header);
+  const matchState = useSelector((state) => state.matchinfo);
+  const teamState = useSelector((state) => state.teaminfo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,8 +17,6 @@ export default function Header(props) {
   }, []);
 
   matchId=1;
-
-  data =get_match_info_teams(teamData,matchId,headerData);
 
   return (
     <div>
