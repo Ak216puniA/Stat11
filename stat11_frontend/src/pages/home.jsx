@@ -7,7 +7,7 @@ import {
   setNewTeamName,
   setTeamFlag,
   initialState,
-} from "../features/home/createTeamSlice";
+} from "../features/home/createMatchSlice";
 import { Navigate } from "react-router-dom";
 import CreateMatchDialogBox from "../components/dialogBoxes/createMatch";
 
