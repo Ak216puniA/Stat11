@@ -7,11 +7,6 @@ import { useDispatch } from "react-redux";
 import { matchteamData } from "../../features/analytics/analyticsCardSlice";
 
 export default function MediaCard(props) {
-  const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(matchteamData());
-  }, []);
   return (
     <Card
       sx={{

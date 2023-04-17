@@ -3,16 +3,31 @@ import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
 import { playerData } from "../../features/analytics/pieChartSlice";
+import { matchteamData } from "../../features/analytics/analyticsCardSlice";
 
 export default function PieChart() {
+  const teamstate = useSelector((state) => state.analyticsCard.teaminfo);
   const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(playerData());
   }, []);
+  useEffect(() => {
+    dispatch(matchteamData());
+  }, []);
 
+  const teamids = teamstate.map((x) => x.id);
+  const team1 = teamids[0];
+  const team2 = teamids[1];
+
+  const team1players = playerNamesRuns.map((x) =>
+    x.team.id == team1 ? x.player.person.first_name : null
+  );
+  const team2players = playerNamesRuns.map((x) =>
+    x.team.id == team2 ? x.player.person.first_name : null
+  );
   const data = {
-    labels: playerNamesRuns.map((x) => x.player.person.first_name),
+    labels: team1players,
     datasets: [
       {
         label: "Runs Scored",
