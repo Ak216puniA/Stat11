@@ -25,7 +25,9 @@ export const playerData = createAsyncThunk("header/playerData", () => {
 });
 
 export const matchteamData = createAsyncThunk("header/matchteamData", () => {
-  return BackendClient.get(matchTeamsBackendUrl(matchId)).then((res) => res.data);
+  return BackendClient.get(matchTeamsBackendUrl(matchId)).then(
+    (res) => res.data
+  );
 });
 
 const analyticsCardSlice = createSlice({
@@ -38,7 +40,7 @@ const analyticsCardSlice = createSlice({
         state.loading = true;
       })
       .addCase(matchteamData.fulfilled, (state, action) => {
-        alert("Got team fulfill");
+        //alert("Got team fulfill");
         state.loading = false;
         state.error = false;
         state.message = "";
