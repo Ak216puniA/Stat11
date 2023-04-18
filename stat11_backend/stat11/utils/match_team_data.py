@@ -18,8 +18,13 @@ def get_match_team_data(match_id):
                 team_wickets += 1
         serializer = TeamNestedSerializer(team)
         data = serializer.data
-        data['team_runs'] = team_runs
+        
+        data['noBalls'] = team.noball
+        data['wides'] = team.wide
+        data['byes'] = team.bye
+        data['legByes'] = team.legbye
         team_extras=team.noball+team.wide+team.bye+team.legbye
+        data['team_runs'] = team_runs + team_extras
         data['team_extras'] = team_extras
         data['team_wickets'] =  team_wickets
         team_current_overs = team_balls//6
