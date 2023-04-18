@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {  } from "react";
 import { Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { matchteamData } from "../../features/analytics/analyticsCardSlice";
 
 export default function MediaCard(props) {
   return (

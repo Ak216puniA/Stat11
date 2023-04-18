@@ -1,11 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BackendClient from "../../BackendClient";
-import {
-  matchTeamsBackendUrl,
-  matchBackendUrl,
-  teamBackendUrl,
-  teamUrl,
-} from "../../urls";
+import { teamBackendUrl, teamUrl,matchTeamsBackendUrl } from "../../urls";
 
 const initialState = {
   loading: false,
@@ -14,10 +9,7 @@ const initialState = {
   playerinfo: [],
   teaminfo: [],
 };
-const matchId = 1;
-export const headerData = createAsyncThunk("header/headerData", () => {
-  return BackendClient.get(matchBackendUrl()).then((res) => res.data);
-});
+const matchId=1
 
 export const teamData = createAsyncThunk("header/teamData", () => {
   return BackendClient.get(teamBackendUrl()).then((res) => res.data);
@@ -27,22 +19,11 @@ export const playerData = createAsyncThunk("header/playerData", () => {
   return BackendClient.get(teamUrl()).then((res) => res.data);
 });
 
-export const teamwisebatterscoreboardData = createAsyncThunk(
-  "header/teamwisebatterscoreboardData",
-  () => {
-    return BackendClient.get(batterScoreboardteamsBackendUrl(teamId)).then(
-      (res) => res.data
-    );
-  }
-);
-// export const headerData = createAsyncThunk("match/teamData", async () => {
-//   try {
-//     const res = await BackendClient.get(headerUrl());
-//     return res.data;
-//   } catch (err) {
-//     return console.log(err);
-//   }
-// });
+export const matchteamData = createAsyncThunk("header/matchteamData", () => {
+  return BackendClient.get(matchTeamsBackendUrl(matchId)).then(
+    (res) => res.data
+  );
+});
 
 const pieChartSlice = createSlice({
   name: "piechart",
@@ -50,37 +31,18 @@ const pieChartSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      //   .addCase(headerData.pending, (state) => {
-      //     state.loading = true;
-      //   })
-      //   .addCase(headerData.fulfilled, (state, action) => {
-      //     alert("Got fulfill");
-      //     state.loading = false;
-      //     state.error = false;
-      //     state.message = "";
-      //     //console.log(action.payload);
-      //     state.matchinfo = action.payload;
-      //     // console.log(action.payload.matchinfo);
-      //   })
-      //   .addCase(headerData.rejected, (state, action) => {
-      //     alert("Got reject");
-      //     state.loading = false;
-      //     state.error = true;
-      //     state.message = action.error.message;
-      //     state.matchinfo = [];
-      //   })
-      .addCase(teamwisebatterscoreboardData.pending, (state) => {
+      .addCase(matchteamData.pending, (state) => {
         state.loading = true;
       })
-      .addCase(teamwisebatterscoreboardData.fulfilled, (state, action) => {
-        alert("Got team fulfill");
+      .addCase(matchteamData.fulfilled, (state, action) => {
+        //alert("Got team fulfill");
         state.loading = false;
         state.error = false;
         state.message = "";
         console.log(action.payload);
         state.teaminfo = action.payload;
       })
-      .addCase(teamwisebatterscoreboardData.rejected, (state, action) => {
+      .addCase(matchteamData.rejected, (state, action) => {
         alert("Got team reject");
         state.loading = false;
         state.error = true;
@@ -95,7 +57,7 @@ const pieChartSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.message = "";
-        console.log(action.payload);
+        //console.log(action.payload);
         state.playerinfo = action.payload;
       })
       .addCase(playerData.rejected, (state, action) => {

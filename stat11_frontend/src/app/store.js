@@ -4,7 +4,6 @@ import userReducer from "../features/user/userSlice";
 import sideBarReducer from "../features/sideBar/sideBarSlice";
 import matchReducer from "../features/match/matchSlice";
 import pieChartReducer from "../features/analytics/pieChartSlice";
-import analyticsCardReducer from "../features/analytics/analyticsCardSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +12,5 @@ export const store = configureStore({
     sideBar: sideBarReducer,
     match: matchReducer,
     pieChart: pieChartReducer,
-    analyticsCard: analyticsCardReducer,
   },
 });
