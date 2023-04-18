@@ -55,4 +55,4 @@ function MatchTabs() {
     )
 }
 
-export default MatchTabs
+export default MatchTabs;

@@ -7,10 +7,10 @@ import MediaCard from "../components/analytics/analyticscard";
 import PieChart from "../components/analytics/piechart";
 import SideBar from "../components/sideBar/sideBar";
 import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice";
-import { matchteamData } from "../features/analytics/analyticsCardSlice";
+import { matchteamData } from "../features/analytics/pieChartSlice";
 
 function Analytics() {
-  const teamstate = useSelector((state) => state.analyticsCard.teaminfo);
+  const teamstate = useSelector((state) => state.pieChart.teaminfo);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(matchteamData());
@@ -21,9 +21,7 @@ function Analytics() {
 
   const teamnames = teamstate.map((x) => x.name);
   const teamids = teamstate.map((x) => x.id);
-  // console.log(teamnames)
-  // console.log(team1)
-  // console.log(team2)
+
   return (
     <>
       <SideBar />
@@ -40,10 +38,16 @@ function Analytics() {
       >
         <Grid container>
           <Grid item xs>
-            <MediaCard title={teamnames[0]} chart={PieChart(teamids[0])}></MediaCard>
+            <MediaCard
+              title={teamnames[0]}
+              chart={PieChart(teamids[0])}
+            ></MediaCard>
           </Grid>
           <Grid item xs>
-            <MediaCard title={teamnames[1]} chart={PieChart(teamids[1])}></MediaCard>
+            <MediaCard
+              title={teamnames[1]}
+              chart={PieChart(teamids[1])}
+            ></MediaCard>
           </Grid>
           {/* <Grid item xs={6}>
             <MediaCard title="Runs per Over" chart={BarChart()}></MediaCard>

@@ -3,35 +3,35 @@ import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
 import { playerData } from "../../features/analytics/pieChartSlice";
-import { matchteamData } from "../../features/analytics/analyticsCardSlice";
+//import { matchteamData } from "../../features/analytics/analyticsCardSlice";
 
-export default function PieChart() {
-  const teamstate = useSelector((state) => state.analyticsCard.teaminfo);
+export default function PieChart(teamid) {
+  //const teamstate = useSelector((state) => state.pieChart.teaminfo);
   const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(playerData());
   }, []);
-  useEffect(() => {
-    dispatch(matchteamData());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(matchteamData());
+  // }, []);
 
-  const teamids = teamstate.map((x) => x.id);
-  const team1 = teamids[0];
-  const team2 = teamids[1];
+  const teamplayernames = [];
+  const teamplayerruns = [];
+  playerNamesRuns.map((element, index) => {
+    if (element.team.id === teamid) {
+      teamplayernames.push(element.player.person.first_name)
+      teamplayerruns.push(element.runs)
+    }
+    return null;
+  });
 
-  const team1players = playerNamesRuns.map((x) =>
-    x.team.id == team1 ? x.player.person.first_name : null
-  );
-  const team2players = playerNamesRuns.map((x) =>
-    x.team.id == team2 ? x.player.person.first_name : null
-  );
   const data = {
-    labels: team1players,
+    labels: teamplayernames,
     datasets: [
       {
         label: "Runs Scored",
-        data: playerNamesRuns.map((x) => x.runs),
+        data: teamplayerruns,
         backgroundColor: [
           "#ADDFE8",
           "#FDB26E",
@@ -81,7 +81,7 @@ export default function PieChart() {
       //   responsive: true,
       //   animation: {
       //     animateScale: true,
-      //   },
+      //   }}
     },
   };
 
