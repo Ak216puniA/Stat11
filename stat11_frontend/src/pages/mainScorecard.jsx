@@ -9,20 +9,12 @@ import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice";
 
 export default function MainScorecard() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(changeSideBarTabsType("match"));
   }, []);
-
   return (
     <Box sx={{ backgroundColor: "#E5E5E5", position: "sticky" }}>
-      <Header
-        team1Name="Royal Challengers Bangalore"
-        team2Name="Lucknow Super Giants"
-        location="M. Chinnaswamy Stadium, Bengaluru"
-        numberOfOvers="20"
-        teamWhichWonTheToss="Lucknow Super Giants"
-      />
+      <Header />
       <SideBar />
       <MainBattingScorecard />
       <MainBowlingScorecard />

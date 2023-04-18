@@ -48,12 +48,11 @@ function addrows(bowlerDetails)
   const rowsbowler = bowlerDetails.map((bowlerDetail)=>{
     return createBowlerTable(
         bowlerDetail.player.person.first_name+" "+bowlerDetail.player.person.last_name,
+        bowlerDetail.overs,
         bowlerDetail.maidens,
         bowlerDetail.runs,
         bowlerDetail.wickets,
-        bowlerDetail.nb,
-        bowlerDetail.wd,
-        bowlerDetail.eco,
+        bowlerDetail.economy,
       )
   
   

@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { Box } from '@mui/material'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Box } from "@mui/material";
 import { batterScoreData } from "../../../features/match/matchSlice";
 
-import { 
+import {
   Table,
   TableBody,
   TableCell,
@@ -49,25 +49,21 @@ function createBatterTable(
   howOut
 ) {
   var x = false;
-  if (status == 'out')
-    {
-      x = true;
-      return { Batter, runs, balls, s4, s6, SR, fielder, bowler, howOut, x };
-    }
-    
+  if (status == "out") {
+    x = true;
+    return { Batter, runs, balls, s4, s6, SR, fielder, bowler, howOut, x };
+  }
+
   return { Batter, runs, balls, s4, s6, SR, x };
 }
 
-
-
-function addrows(batterDetails)
-{
+function addrows(batterDetails) {
   // var rowsbatter = []
   //   rowsbatter[0] = createBatterTable("Subhajit", 29 ,2, 2, 2, 8.8, false);
   //   rowsbatter[1] = createBatterTable("Subhajit", 29 ,2, 2, 2, 8.8, false);
   // // for(let i=0; i<2; i++ )
   // {
-  //   rowsbatter[i] = 
+  //   rowsbatter[i] =
   //   createBatterTable(batterDetails[i].player.person.username,
   //     batterDetails[i].runs,
   //     batterDetails[i].balls,
@@ -76,32 +72,51 @@ function addrows(batterDetails)
   //     99.8
   //     )
   // };
-const rowsbatter = batterDetails.map((batterDetail) => {
-  return createBatterTable(
-    //batterDetail.player.person.username,
-    batterDetail.player.person.first_name+" "+batterDetail.player.person.last_name,
-    batterDetail.runs,
-    batterDetail.balls,
-    batterDetail.fours,
-    batterDetail.sixes,
-    batterDetail.strike_rate,
-  );
-});
+  function mapHowOutToWicketType(data) {
+    if (data == "catch") {
+      return 2
+    }else if (data == "bowled") {
+      return 1
+    }else if (data == "lbw") {
+      return 4
+    }else if (data == "run_out") {
+      return 3
+    }else {
+      return 5
+    }
+  }
 
+  mapHowOutToWicketType()
+  const rowsbatter = batterDetails.map((batterDetail) => {
+    
+    return createBatterTable(
+      //batterDetail.player.person.username,
+      batterDetail.player.person.first_name +
+        " " +
+        batterDetail.player.person.last_name,
+      batterDetail.runs,
+      batterDetail.balls,
+      batterDetail.fours,
+      batterDetail.sixes,
+      batterDetail.strike_rate,
+      batterDetail.status,
+      batterDetail.wicket_taker.person.first_name + " " + batterDetail.wicket_taker.person.last_name,
+      batterDetail.bowled_out_by.person.first_name + " " + batterDetail.bowled_out_by.person.last_name,
+      mapHowOutToWicketType(batterDetail.wicket_type)
+    );
+  });
 
-  return rowsbatter
+  return rowsbatter;
 }
 
 export default function BattingTable(props) {
-  const batterDetails = useSelector(state => state.match.batterScores) 
-  const rows_batter = addrows(batterDetails)
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(
-      batterScoreData()
-      )
-  },[])
-  console.log("batters ",batterDetails)
+  const batterDetails = useSelector((state) => state.match.batterScores);
+  const rows_batter = addrows(batterDetails);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(batterScoreData());
+  }, []);
+  console.log("batters ", batterDetails);
   let secondarytext;
   if (props.hasInningsEnded) {
     secondarytext = "Not out";
@@ -126,10 +141,8 @@ export default function BattingTable(props) {
   };
 
   return (
-    <Box >
-      <TableContainer
-        component={Paper}
-      >
+    <Box>
+      <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -155,8 +168,6 @@ export default function BattingTable(props) {
           </TableHead>
           <TableBody>
             {rows_batter.map((row) =>
-              // console.log(row);
-              
               !row.x ? (
                 <StyledTableRow>
                   {/* secondarytext = {{row.status}? updateSecondaryText({row.howOut}, {row.fielder}, {row.bowler}) : secondarytext} */}
