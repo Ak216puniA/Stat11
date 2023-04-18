@@ -12,6 +12,7 @@ const initialState = {
   error: "",
   message: "",
   playerinfo: [],
+  teaminfo: [],
 };
 const matchId = 1;
 export const headerData = createAsyncThunk("header/headerData", () => {
@@ -25,6 +26,15 @@ export const teamData = createAsyncThunk("header/teamData", () => {
 export const playerData = createAsyncThunk("header/playerData", () => {
   return BackendClient.get(teamUrl()).then((res) => res.data);
 });
+
+export const teamwisebatterscoreboardData = createAsyncThunk(
+  "header/teamwisebatterscoreboardData",
+  () => {
+    return BackendClient.get(batterScoreboardteamsBackendUrl(teamId)).then(
+      (res) => res.data
+    );
+  }
+);
 // export const headerData = createAsyncThunk("match/teamData", async () => {
 //   try {
 //     const res = await BackendClient.get(headerUrl());
@@ -59,24 +69,24 @@ const pieChartSlice = createSlice({
       //     state.message = action.error.message;
       //     state.matchinfo = [];
       //   })
-      //   .addCase(teamData.pending, (state) => {
-      //     state.loading = true;
-      //   })
-      //   .addCase(teamData.fulfilled, (state, action) => {
-      //     alert("Got team fulfill");
-      //     state.loading = false;
-      //     state.error = false;
-      //     state.message = "";
-      //     console.log(action.payload);
-      //     state.teaminfo = action.payload;
-      //   })
-      //   .addCase(teamData.rejected, (state, action) => {
-      //     alert("Got team reject");
-      //     state.loading = false;
-      //     state.error = true;
-      //     state.message = action.error.message;
-      //     state.teaminfo = [];
-      //   })
+      .addCase(teamwisebatterscoreboardData.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(teamwisebatterscoreboardData.fulfilled, (state, action) => {
+        alert("Got team fulfill");
+        state.loading = false;
+        state.error = false;
+        state.message = "";
+        console.log(action.payload);
+        state.teaminfo = action.payload;
+      })
+      .addCase(teamwisebatterscoreboardData.rejected, (state, action) => {
+        alert("Got team reject");
+        state.loading = false;
+        state.error = true;
+        state.message = action.error.message;
+        state.teaminfo = [];
+      })
       .addCase(playerData.pending, (state) => {
         state.loading = true;
       })

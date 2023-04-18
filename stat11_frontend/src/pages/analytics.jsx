@@ -18,14 +18,12 @@ function Analytics() {
   useEffect(() => {
     dispatch(changeSideBarTabsType("match"));
   }, []);
-  
+
   const teamnames = teamstate.map((x) => x.name);
-  
-  const team1 = teamnames[0];
-  const team2 = teamnames[1];
-  console.log(teamnames)
-  console.log(team1)
-  console.log(team2)
+  const teamids = teamstate.map((x) => x.id);
+  // console.log(teamnames)
+  // console.log(team1)
+  // console.log(team2)
   return (
     <>
       <SideBar />
@@ -42,10 +40,10 @@ function Analytics() {
       >
         <Grid container>
           <Grid item xs>
-            <MediaCard title={team1} chart={PieChart()}></MediaCard>
+            <MediaCard title={teamnames[0]} chart={PieChart(teamids[0])}></MediaCard>
           </Grid>
           <Grid item xs>
-            <MediaCard title={team2} chart={PieChart()}></MediaCard>
+            <MediaCard title={teamnames[1]} chart={PieChart(teamids[1])}></MediaCard>
           </Grid>
           {/* <Grid item xs={6}>
             <MediaCard title="Runs per Over" chart={BarChart()}></MediaCard>
