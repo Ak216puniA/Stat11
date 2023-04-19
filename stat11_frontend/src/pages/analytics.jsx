@@ -1,26 +1,27 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Box } from "@mui/material";
-import Header from "../components/header";
-import Grid from "@mui/material/Grid";
-import MediaCard from "../components/analytics/analyticscard";
-import PieChart from "../components/analytics/piechart";
-import SideBar from "../components/sideBar/sideBar";
-import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice";
-import { matchteamData } from "../features/analytics/pieChartSlice";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Box } from "@mui/material"
+import Header from "../components/header"
+import Grid from "@mui/material/Grid"
+import MediaCard from "../components/analytics/analyticscard"
+import PieChart from "../components/analytics/piechart"
+import BarChart from "../components/analytics/barchart"
+import SideBar from "../components/sideBar/sideBar"
+import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice"
+import { matchteamData } from "../features/analytics/pieChartSlice"
 
 function Analytics() {
-  const teamstate = useSelector((state) => state.pieChart.teaminfo);
-  const dispatch = useDispatch();
+  const teamstate = useSelector((state) => state.pieChart.teaminfo)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(matchteamData());
-  }, []);
+    dispatch(matchteamData())
+  }, [])
   useEffect(() => {
-    dispatch(changeSideBarTabsType("match"));
-  }, []);
+    dispatch(changeSideBarTabsType("match"))
+  }, [])
 
-  const teamnames = teamstate.map((x) => x.name);
-  const teamids = teamstate.map((x) => x.id);
+  const teamnames = teamstate.map((x) => x.name)
+  const teamids = teamstate.map((x) => x.id)
 
   return (
     <>
@@ -43,24 +44,31 @@ function Analytics() {
               chart={PieChart(teamids[0])}
             ></MediaCard>
           </Grid>
+
           <Grid item xs>
             <MediaCard
               title={teamnames[1]}
               chart={PieChart(teamids[1])}
             ></MediaCard>
           </Grid>
-          {/* <Grid item xs={6}>
-            <MediaCard title="Runs per Over" chart={BarChart()}></MediaCard>
+          <Grid item xs>
+            <MediaCard
+              title={teamnames[0]}
+              chart={BarChart(teamids[0])}
+            ></MediaCard>
           </Grid>
-          <Grid item xs={6}>
-            <MediaCard title="Run Rate" chart={LineChart()}></MediaCard>
-          </Grid> */}
+          <Grid item xs>
+            <MediaCard
+              title={teamnames[1]}
+              chart={BarChart(teamids[1])}
+            ></MediaCard>
+          </Grid>
         </Grid>
         <br />
         <br />
       </Box>
     </>
-  );
+  )
 }
 
-export default Analytics;
+export default Analytics

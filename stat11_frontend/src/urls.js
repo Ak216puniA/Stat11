@@ -84,3 +84,7 @@ export const matchTeamsUrl =() =>{
 export const playerBackendUrl = () => {
     return `${baseBackendUrl()}player/`
 }
+
+export const bowlerBackendUrl = () => {
+  return `${baseBackendUrl()}bowler_scoreboard/`;
+};

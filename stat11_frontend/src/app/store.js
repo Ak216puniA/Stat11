@@ -5,7 +5,8 @@ import sideBarReducer from '../features/sideBar/sideBarSlice'
 import matchReducer from '../features/match/matchSlice'
 import teamReducer from '../features/team/teamSlice'
 import playerReducer from '../features/player/playerSlice'
-import pieChartReducer from "../features/analytics/pieChartSlice";
+import pieChartReducer from "../features/analytics/pieChartSlice"
+import barChartReducer from "../features/analytics/barChartSlice"
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     team: teamReducer,
     player: playerReducer,
     pieChart: pieChartReducer,
+    barChart: barChartReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
 });
