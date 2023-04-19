@@ -51,3 +51,7 @@ export const matchBackendUrl = () => {
 export const allMatchAndTeamsUrl = () => {
   return `${matchBackendUrl()}all_match_and_teams/`;
 };
+
+export const bowlerBackendUrl = () => {
+  return `${baseBackendUrl()}bowler_scoreboard/`;
+};

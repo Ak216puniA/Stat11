@@ -1,22 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import BackendClient from "../../BackendClient"
-import { teamBackendUrl, teamUrl,matchTeamsBackendUrl } from "../../urls"
+import { teamBackendUrl, matchTeamsBackendUrl,bowlerBackendUrl } from "../../urls"
 
 const initialState = {
   loading: false,
   error: "",
   message: "",
-  playerinfo: [],
+  bowlerinfo: [],
   teaminfo: [],
 }
 const matchId=1
 
-export const teamData = createAsyncThunk("header/teamData", () => {
-  return BackendClient.get(teamBackendUrl()).then((res) => res.data)
-})
+// export const teamData = createAsyncThunk("header/teamData", () => {
+//   return BackendClient.get(teamBackendUrl()).then((res) => res.data)
+// })
 
-export const playerData = createAsyncThunk("header/playerData", () => {
-  return BackendClient.get(teamUrl()).then((res) => res.data)
+export const bowlerData = createAsyncThunk("header/bowlerData", () => {
+  return BackendClient.get(bowlerBackendUrl()).then((res) => res.data)
 })
 
 export const matchteamData = createAsyncThunk("header/matchteamData", () => {
@@ -25,8 +25,8 @@ export const matchteamData = createAsyncThunk("header/matchteamData", () => {
   )
 })
 
-const pieChartSlice = createSlice({
-  name: "piechart",
+const barChartSlice = createSlice({
+  name: "barchart",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -49,25 +49,25 @@ const pieChartSlice = createSlice({
         state.message = action.error.message
         state.teaminfo = []
       })
-      .addCase(playerData.pending, (state) => {
+      .addCase(bowlerData.pending, (state) => {
         state.loading = true
       })
-      .addCase(playerData.fulfilled, (state, action) => {
+      .addCase(bowlerData.fulfilled, (state, action) => {
         //alert("Got team fulfill")
         state.loading = false
         state.error = false
         state.message = ""
-        //console.log(action.payload)
-        state.playerinfo = action.payload
+        console.log(action.payload)
+        state.bowlerinfo = action.payload
       })
-      .addCase(playerData.rejected, (state, action) => {
+      .addCase(bowlerData.rejected, (state, action) => {
         alert("Got team reject")
         state.loading = false
         state.error = true
         state.message = action.error.message
-        state.playerinfo = []
+        state.bowlerinfo = []
       })
   },
 })
 
-export default pieChartSlice.reducer
+export default barChartSlice.reducer

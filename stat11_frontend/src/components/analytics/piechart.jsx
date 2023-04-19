@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { Pie } from "react-chartjs-2";
-import Chart from "chart.js/auto";
-import { useDispatch, useSelector } from "react-redux";
-import { playerData } from "../../features/analytics/pieChartSlice";
-//import { matchteamData } from "../../features/analytics/analyticsCardSlice";
+import React, { useState, useEffect } from "react"
+import { Pie } from "react-chartjs-2"
+import Chart from "chart.js/auto"
+import { useDispatch, useSelector } from "react-redux"
+import { playerData } from "../../features/analytics/pieChartSlice"
+//import { matchteamData } from "../../features/analytics/analyticsCardSlice"
 
 export default function PieChart(teamid) {
-  //const teamstate = useSelector((state) => state.pieChart.teaminfo);
-  const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo);
-  const dispatch = useDispatch();
+  //const teamstate = useSelector((state) => state.pieChart.teaminfo)
+  const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(playerData());
-  }, []);
+    dispatch(playerData())
+  }, [])
   // useEffect(() => {
-  //   dispatch(matchteamData());
-  // }, []);
+  //   dispatch(matchteamData())
+  // }, [])
 
-  const teamplayernames = [];
-  const teamplayerruns = [];
+  const teamplayernames = []
+  const teamplayerruns = []
   playerNamesRuns.map((element, index) => {
     if (element.team.id === teamid) {
       teamplayernames.push(element.player.person.first_name)
       teamplayerruns.push(element.runs)
     }
-    return null;
-  });
+    return null
+  })
 
   const data = {
     labels: teamplayernames,
@@ -53,7 +53,7 @@ export default function PieChart(teamid) {
         borderWidth: 0.2,
       },
     ],
-  };
+  }
   const options = {
     plugins: {
       legend: {
@@ -67,27 +67,28 @@ export default function PieChart(teamid) {
         display: true,
         position: "bottom",
       },
-      // title: {
-      //   display: true,
-      //   text: "Pie Chart",
-      //   color: "blue",
-      //   font: {
-      //     size: 14,
-      //   },
-      //   padding: {
-      //     top: 5,
-      //     bottom: 5,
-      //   },
-      //   responsive: true,
-      //   animation: {
-      //     animateScale: true,
-      //   }}
+      title: {
+        display: true,
+        text: "Runs Scored",
+        color: "#202020",
+        font: {
+          size: 16,
+        },
+        padding: {
+          top: 15,
+          bottom: 15,
+        },
+        responsive: true,
+        animation: {
+          animateScale: true,
+        },
+      },
     },
-  };
+  }
 
   return (
     <div>
       <Pie data={data} options={options}></Pie>
     </div>
-  );
+  )
 }

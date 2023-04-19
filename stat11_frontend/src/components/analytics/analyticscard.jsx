@@ -1,7 +1,7 @@
-import React, {  } from "react";
-import { Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import React from "react"
+import { Typography } from "@mui/material"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
 
 export default function MediaCard(props) {
   return (
@@ -13,7 +13,7 @@ export default function MediaCard(props) {
         maxHeight: "540px",
         boxShadow: "4px 4px 4px 4px #D9D9D9",
         borderRadius: "16px",
-        // marginBottom: "40px",
+        marginBottom: "40px",
         // marginRight: "40px",
         // marginTop: "40px",
         //marginLeft: "50%",
@@ -43,5 +43,5 @@ export default function MediaCard(props) {
         {props.chart}
       </CardContent>
     </Card>
-  );
+  )
 }
