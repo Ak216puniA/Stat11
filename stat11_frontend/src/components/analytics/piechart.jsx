@@ -3,18 +3,13 @@ import { Pie } from "react-chartjs-2"
 import Chart from "chart.js/auto"
 import { useDispatch, useSelector } from "react-redux"
 import { playerData } from "../../features/analytics/pieChartSlice"
-//import { matchteamData } from "../../features/analytics/analyticsCardSlice"
 
 export default function PieChart(teamid) {
-  //const teamstate = useSelector((state) => state.pieChart.teaminfo)
   const playerNamesRuns = useSelector((state) => state.pieChart.playerinfo)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(playerData())
   }, [])
-  // useEffect(() => {
-  //   dispatch(matchteamData())
-  // }, [])
 
   const teamplayernames = []
   const teamplayerruns = []

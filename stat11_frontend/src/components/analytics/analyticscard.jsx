@@ -14,9 +14,6 @@ export default function MediaCard(props) {
         boxShadow: "4px 4px 4px 4px #D9D9D9",
         borderRadius: "16px",
         marginBottom: "40px",
-        // marginRight: "40px",
-        // marginTop: "40px",
-        //marginLeft: "50%",
       }}
     >
       <CardContent
