@@ -13,7 +13,7 @@ from rest_framework import status
 class MatchModelViewSet(viewsets.ModelViewSet):
     queryset = Match.objects.all().order_by('-date')
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ['tournament__id', 'date', 'time', 'overs_no']
+    filterset_fields = [ 'date', 'time', 'overs_no']
     ordering_fields = ['date', 'time']
 
     def get_serializer_class(self):
