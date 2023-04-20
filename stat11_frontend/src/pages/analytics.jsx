@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Box } from "@mui/material"
 import Header from "../components/header"
 import Grid from "@mui/material/Grid"
-import MediaCard from "../components/analytics/analyticscard"
+import AnalyticsCard from "../components/analytics/analyticscard"
 import PieChart from "../components/analytics/piechart"
 import BarChart from "../components/analytics/barchart"
 import SideBar from "../components/sideBar/sideBar"
@@ -39,29 +39,29 @@ function Analytics() {
       >
         <Grid container>
           <Grid item xs>
-            <MediaCard
+            <AnalyticsCard
               title={teamnames[0]}
               chart={PieChart(teamids[0])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
 
           <Grid item xs>
-            <MediaCard
+            <AnalyticsCard
               title={teamnames[1]}
               chart={PieChart(teamids[1])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
           <Grid item xs>
-            <MediaCard
+            <AnalyticsCard
               title={teamnames[0]}
               chart={BarChart(teamids[0])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
           <Grid item xs>
-            <MediaCard
+            <AnalyticsCard
               title={teamnames[1]}
               chart={BarChart(teamids[1])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
         </Grid>
         <br />

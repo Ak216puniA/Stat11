@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 
-export default function MediaCard(props) {
+export default function AnalyticsCard(props) {
   return (
     <Card
       sx={{

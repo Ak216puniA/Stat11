@@ -1,11 +1,30 @@
 import React from "react";
 import { Typography, Box } from "@mui/material";
+import { getAllMatchAndTeams } from "../features/match/matchSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function Header(props) {
+  const dispatch = useDispatch();
+  const Matchdetails = useSelector((state) => state.match.matchAndTeamsList);
+  useEffect(() => {
+    dispatch(getAllMatchAndTeams());
+  }, []);
+
+  let teamWhichWonTheToss;
+  function decideWhichTeamWonTheToss() {
+    if (Matchdetails[0].toss) {
+      teamWhichWonTheToss = Matchdetails[0].name;
+    } else {
+      teamWhichWonTheToss = Matchdetails[1].name;
+    }
+  }
+
+  decideWhichTeamWonTheToss();
   return (
-    <Box sx = {{width: "70%", ml:"25%", position: "sticky"}}>
+    <Box sx={{ width: "70%", ml: "25%", position: "sticky"}}>
       <Typography
-        component="box"
+        // component="box"
         sx={{
           fontSize: "32px",
           float: "left",
@@ -14,20 +33,20 @@ export default function Header(props) {
           // paddingBottom: "10px",
         }}
       >
-        {props.team1Name} v/s {props.team2Name}
+        {Matchdetails[0].name} v/s {Matchdetails[1].name}
         <br />
         <Typography
-          component="box"
+          // component="box"
           sx={{
             color: "#448791",
             fontSize: "20px",
             float: "left",
           }}
         >
-          {props.location} &nbsp;
+          {Matchdetails[0].match.location} &nbsp;
         </Typography>
         <Typography
-          component="box"
+          // component="box"
           sx={{
             color: "#797979",
             fontSize: "20px",
@@ -35,12 +54,12 @@ export default function Header(props) {
           }}
         >
           {" "}
-          {props.numberOfOvers} Overs
+          {Matchdetails[0].match.overs_no} Overs
         </Typography>
       </Typography>
 
       <Typography
-        component="box"
+        // component="box"
         sx={{
           color: "#797979",
           fontSize: "20px",
@@ -52,10 +71,13 @@ export default function Header(props) {
       >
         {" "}
         Toss: <br />
-        {props.teamWhichWonTheToss}
+        {teamWhichWonTheToss}
       </Typography>
 
-      <Typography component="box" sx={{ backgroundColor: "#D9D9D9" }}>
+      <Typography 
+      // component="box" 
+      sx={{ backgroundColor: "#D9D9D9" }}
+      >
         <hr style={{ width: "100%" }} />
       </Typography>
     </Box>

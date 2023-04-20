@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { Box } from '@mui/material'
-import { teamScoreData } from "../../../features/match/matchSlice";
+import { batterScoreData, getAllMatchAndTeams } from "../../../features/match/matchSlice";
 import { 
   Table,
   TableBody,
@@ -10,13 +9,15 @@ import {
   TableRow,
   TableHead,
   TableContainer,
+  Box
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { tableCellClasses } from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#aad3e0",
+    backgroundColor: theme.palette.secondary.light,
     color: theme.palette.common.black,
     fontSize: 20,
   },
@@ -27,13 +28,27 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
+    backgroundColor: "white",
   },
   // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
+
+function mapHowOutToWicketType(data) {
+  if (data == "catch") {
+    return 2
+  } else if (data == "bowled") {
+    return 1
+  } else if (data == "lbw") {
+    return 4
+  } else if (data == "run_out") {
+    return 3
+  } else {
+    return 5
+  }
+}
 
 function createBatterTable(
   Batter,
@@ -43,60 +58,68 @@ function createBatterTable(
   s6,
   SR,
   status,
-  fielder,
   bowler,
-  howOut
+  fielder,
+  wicket_type
 ) {
-  if (status)
-    return { Batter, runs, balls, s4, s6, SR, fielder, bowler, howOut, status };
-  return { Batter, runs, balls, s4, s6, SR, status };
+  var out = false;
+  var howOut = mapHowOutToWicketType(wicket_type);
+  if (status == 'out') {
+    out = true;
+    return { Batter, runs, balls, s4, s6, SR, fielder, bowler, howOut, out };
+  }
+
+  return { Batter, runs, balls, s4, s6, SR, out };
 }
 
-const rows_batter = [
-  createBatterTable(
-    "Virat Kohli",
-    61,
-    44,
-    4,
-    4,
-    138.64,
-    true,
-    "Marcus Stoinis",
-    "Amit Mishra",
-    2
-  ),
-  createBatterTable("Faf du Plessis", 79, 46, 5, 5, 171.74, false),
-  createBatterTable(
-    "Glenn Maxwell",
-    59,
-    29,
-    3,
-    6,
-    203.45,
-    true,
-    "",
-    "Mark Wood",
-    1
-  ),
-  createBatterTable("Dinesh Karthik", 1, 1, 0, 0, 100, false),
-  // createBatterTable("3.Manashree Eclair", 6.0, 8, 1, 0, 5.5),
-];
+
+
+function addrows(batterDetails) {
+
+  const rowsbatter = batterDetails.map((batterDetail) => {
+    var bowler = (batterDetail.status == "out")? (batterDetail.bowled_out_by.person.first_name + " " + batterDetail.bowled_out_by.person.last_name): " ";
+    var fielder = (batterDetail.status == "out" && (batterDetail.wicket_type!="bowled")|(batterDetail.wicket_type!="lbw"))? (batterDetail.wicket_taker.person.first_name + " " + batterDetail.wicket_taker.person.last_name): " ";
+    return createBatterTable(
+      //batterDetail.player.person.username,
+      batterDetail.player.person.first_name + " " + batterDetail.player.person.last_name,
+      batterDetail.runs,
+      batterDetail.balls,
+      batterDetail.fours,
+      batterDetail.sixes,
+      batterDetail.strike_rate,
+      batterDetail.status,
+      //batterDetail.bowled_out_by.person.first_name + " " + batterDetail.bowled_out_by.person.last_name,
+      bowler,
+      fielder,
+      //batterDetail.wicket_taker.person.first_name + " " + batterDetail.wicket_taker.person.last_name,
+      batterDetail.wicket_type
+    );
+  });
+
+
+  return rowsbatter
+}
 
 export default function BattingTable(props) {
-  const batterDetails = useSelector(state => state.match.batterScores)
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(
-      teamScoreData()
-      )
-  },[])
 
+  const Matchdetails = useSelector(state => state.match.matchAndTeamsList)
+  const batterDetails = useSelector(state => state.match.batterScores)
+  const rows_batter = addrows(batterDetails)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(
+      batterScoreData(),
+      getAllMatchAndTeams()
+    )
+  }, [])
+  console.log("batters ", batterDetails)
   let secondarytext;
   if (props.hasInningsEnded) {
     secondarytext = "Not out";
   } else {
     secondarytext = "Batting";
   }
+
 
   const updateSecondaryText = (row) => {
     if (row.howOut == 1) {
@@ -115,9 +138,10 @@ export default function BattingTable(props) {
   };
 
   return (
-    <Box >
+    <Box>
       <TableContainer
         component={Paper}
+        sx={{ borderTopLeftRadius: "16px", borderTopRightRadius: "16px" }}
       >
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -145,7 +169,8 @@ export default function BattingTable(props) {
           <TableBody>
             {rows_batter.map((row) =>
               // console.log(row);
-              !row.status ? (
+
+              !row.out ? (
                 <StyledTableRow>
                   {/* secondarytext = {{row.status}? updateSecondaryText({row.howOut}, {row.fielder}, {row.bowler}) : secondarytext} */}
                   <StyledTableCell
