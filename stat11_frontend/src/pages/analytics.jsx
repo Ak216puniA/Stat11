@@ -1,12 +1,11 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Box } from "@mui/material"
-import Header from "../components/header"
+import MatchHeader from "../components/header/matchHeader"
 import Grid from "@mui/material/Grid"
 import AnalyticsCard from "../components/analytics/analyticscard"
 import PieChart from "../components/analytics/piechart"
 import BarChart from "../components/analytics/barchart"
-import SideBar from "../components/sideBar/sideBar"
 import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice"
 import { matchteamData } from "../features/analytics/pieChartSlice"
 import { useParams } from "react-router"
@@ -25,21 +24,17 @@ function Analytics(props) {
 
   return (
     < >
-      {/* <Header /> */}
+      
       <Box
         component="div"
         sx={{
-          // marginLeft: "27%",
-          // marginTop: "2%",
-          // width: "65%",
-          mt:"60px",
           borderRadius: "16px",
-          pl: 40,
+          pl: 30,
           pb: 20,
           backgroundColor:"background.default",
-          // backgroundPosition:"fixed"
         }}
       >
+        <MatchHeader />
         <Grid container >
           <Grid item xs={6} >
             <AnalyticsCard

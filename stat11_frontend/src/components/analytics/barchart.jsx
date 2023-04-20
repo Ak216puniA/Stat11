@@ -6,15 +6,11 @@ import { bowlerData } from "../../features/analytics/barChartSlice"
 //import { matchteamData } from "../../features/analytics/analyticsCardSlice"
 
 export default function BarChart(teamid) {
-  //const teamstate = useSelector((state) => state.barChart.teaminfo)
   const playerNameswickets = useSelector((state) => state.barChart.bowlerinfo)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(bowlerData())
   }, [])
-  // useEffect(() => {
-  //   dispatch(matchteamData())
-  // }, [])
 
   const teamplayernames = []
   const teamplayerwickets = []

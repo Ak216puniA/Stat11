@@ -13,11 +13,6 @@ const initialState = {
   playerinfo: [],
   teaminfo: [],
 }
-// const matchId = 1
-
-// export const teamData = createAsyncThunk("header/teamData", () => {
-//   return BackendClient.get(teamBackendUrl()).then((res) => res.data)
-// })
 
 export const playerData = createAsyncThunk("header/playerData", () => {
   return BackendClient.get(batterScoreboardBackendUrl()).then((res) => res.data)
