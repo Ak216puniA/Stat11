@@ -13,14 +13,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route 
-        path={`/`} 
-        element={<Auth />} 
-        />
-        <Route 
-        path={`/auth`} 
-        element={<Auth />} 
-        />
+        <Route path={`/`} element={<Auth />} />
+        <Route path={`/auth`} element={<Auth />} />
         {/* <Route 
         path={`/displayTeams`}
         element={<DisplayTeams />}
@@ -50,7 +44,7 @@ function App() {
           element={<Analytics />}
           />
         </Route>
-       
+        
         {/* <Route 
         path={`/updateScore`}
         element={<UpdateScore />}
@@ -65,7 +59,7 @@ function App() {
         /> */}
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

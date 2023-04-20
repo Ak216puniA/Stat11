@@ -9,14 +9,14 @@ import BarChart from "../components/analytics/barchart"
 import SideBar from "../components/sideBar/sideBar"
 import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice"
 import { matchteamData } from "../features/analytics/pieChartSlice"
+import { useParams } from "react-router"
 
-function Analytics() {
+function Analytics(props) {
+  const { match_id } = useParams()
   const teamstate = useSelector((state) => state.pieChart.teaminfo)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(matchteamData())
-  }, [])
-  useEffect(() => {
+    dispatch(matchteamData(match_id))
     dispatch(changeSideBarTabsType("match"))
   }, [])
 
@@ -24,48 +24,50 @@ function Analytics() {
   const teamids = teamstate.map((x) => x.id)
 
   return (
-    <>
-      <SideBar />
-      <Header />
+    < >
+      {/* <Header /> */}
       <Box
         component="div"
         sx={{
-          marginLeft: "27%",
-          marginTop: "2%",
-          width: "65%",
+          // marginLeft: "27%",
+          // marginTop: "2%",
+          // width: "65%",
+          mt:"60px",
           borderRadius: "16px",
-          mb: "2%",
+          pl: 40,
+          pb: 20,
+          backgroundColor:"background.default",
+          // backgroundPosition:"fixed"
         }}
       >
-        <Grid container>
-          <Grid item xs>
-            <MediaCard
+        <Grid container >
+          <Grid item xs={6} >
+            <AnalyticsCard
               title={teamnames[0]}
               chart={PieChart(teamids[0])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
 
-          <Grid item xs>
-            <MediaCard
+          <Grid item xs={6}>
+            <AnalyticsCard
               title={teamnames[1]}
               chart={PieChart(teamids[1])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
-          <Grid item xs>
-            <MediaCard
+          <Grid item xs={6}>
+            <AnalyticsCard
               title={teamnames[0]}
               chart={BarChart(teamids[0])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
-          <Grid item xs>
-            <MediaCard
+          <Grid item xs={6}>
+            <AnalyticsCard
               title={teamnames[1]}
               chart={BarChart(teamids[1])}
-            ></MediaCard>
+            ></AnalyticsCard>
           </Grid>
         </Grid>
-        <br />
-        <br />
+        
       </Box>
     </>
   )

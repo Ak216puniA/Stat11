@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import BackendClient from "../../BackendClient"
-import { teamBackendUrl, teamUrl,matchTeamsBackendUrl } from "../../urls"
+import {
+  teamBackendUrl,
+  batterScoreboardBackendUrl,
+  matchParticipatingTeamsBackendUrl,
+} from "../../urls"
 
 const initialState = {
   loading: false,
@@ -9,18 +13,18 @@ const initialState = {
   playerinfo: [],
   teaminfo: [],
 }
-const matchId=1
+// const matchId = 1
 
-export const teamData = createAsyncThunk("header/teamData", () => {
-  return BackendClient.get(teamBackendUrl()).then((res) => res.data)
-})
+// export const teamData = createAsyncThunk("header/teamData", () => {
+//   return BackendClient.get(teamBackendUrl()).then((res) => res.data)
+// })
 
 export const playerData = createAsyncThunk("header/playerData", () => {
-  return BackendClient.get(teamUrl()).then((res) => res.data)
+  return BackendClient.get(batterScoreboardBackendUrl()).then((res) => res.data)
 })
 
-export const matchteamData = createAsyncThunk("header/matchteamData", () => {
-  return BackendClient.get(matchTeamsBackendUrl(matchId)).then(
+export const matchteamData = createAsyncThunk("header/matchteamData", (matchId) => {
+  return BackendClient.get(matchParticipatingTeamsBackendUrl(matchId)).then(
     (res) => res.data
   )
 })

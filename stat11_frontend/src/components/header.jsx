@@ -4,23 +4,27 @@ import { getAllMatchAndTeams } from "../features/match/matchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-export default function Header(props) {
+export default function Header() {
   const dispatch = useDispatch();
-  const Matchdetails = useSelector((state) => state.match.matchAndTeamsList);
+  const Matchdetails = useSelector((state) => state.match);
   useEffect(() => {
     dispatch(getAllMatchAndTeams());
   }, []);
 
-  let teamWhichWonTheToss;
-  function decideWhichTeamWonTheToss() {
-    if (Matchdetails[0].toss) {
-      teamWhichWonTheToss = Matchdetails[0].name;
-    } else {
-      teamWhichWonTheToss = Matchdetails[1].name;
-    }
-  }
+  console.log("pui",Matchdetails)
 
-  decideWhichTeamWonTheToss();
+  // let teamWhichWonTheToss;
+  // function decideWhichTeamWonTheToss() {
+  //   if (Matchdetails[0].toss) {
+  //     teamWhichWonTheToss = Matchdetails[0].name;
+  //   } else {
+  //     teamWhichWonTheToss = Matchdetails[1].name;
+  //   }
+  // }
+
+  let teamWhichWonTheToss = Matchdetails[0].name;
+
+  //decideWhichTeamWonTheToss();
   return (
     <Box sx={{ width: "70%", ml: "25%", position: "sticky"}}>
       <Typography

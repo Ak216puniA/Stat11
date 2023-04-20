@@ -8,6 +8,7 @@ import UpdateScore from './updateScore'
 import MainScorecard from './mainScorecard'
 import DisplayTeams from './displayTeams'
 import Highlights from './highlights'
+import Analytics from './analytics'
 
 function Match() {
     const { match_id } = useParams()
@@ -24,7 +25,7 @@ function Match() {
             //     return <MainScorecard />
             // }
             else if(sideBarState.currentTab==='Analysis') {
-                return 'Analytics'
+                return <Analytics/>
             }
             // else if(sideBarState.currentTab==='Teams') {
             //     return <DisplayTeams />

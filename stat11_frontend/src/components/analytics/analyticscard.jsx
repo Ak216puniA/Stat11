@@ -39,7 +39,7 @@ export default function MediaCard(props) {
         </Typography>
         <br />
       </CardContent>
-      <CardContent sx={{ backgroundColor: "#FFFFFF" }}>
+      <CardContent sx={{ backgroundColor: "background.paper" }}>
         {props.chart}
       </CardContent>
     </Card>
