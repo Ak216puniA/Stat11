@@ -19,6 +19,7 @@ export default function UpdateScore() {
   const dispatch = useDispatch();
   const [newBowler, setNewBowler] = useState("");
   const [newBatsman, setNewBatsman] = useState("");
+  const [fielder, setFielder] = useState("")
   const [wicket, setWicket] = useState("");
   const [isOverComplete, setIsOverComplete] = useState(true);
   const [hasWicketFallen, setHasWicketFallen] = useState(true);
@@ -52,6 +53,16 @@ export default function UpdateScore() {
   ) : (
     <></>
   );
+  const selectFielder = hasWicketFallen ? (
+    selectFormFieldGenerator(
+      "Select Fielder",
+      playerList,
+      fielder,
+      setFielder
+    )
+  ) : (
+    <></>
+  );
   useEffect(() => {
     dispatch(changeSideBarTabsType("home"));
   }, []);
@@ -77,14 +88,17 @@ export default function UpdateScore() {
       <BattingScorecard />
       <Box sx={{ width: "60%", ml: "30%", mt: "1%" }}>
         <Grid container rowSpacing={5} columnSpacing={{ xs: 4, sm: 4, md: 4 }}>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {selectBowler}
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {modeOfDismissal}
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {selectBatsman}
+          </Grid>
+          <Grid item xs={3}>
+            {selectFielder}
           </Grid>
         </Grid>
       </Box>
