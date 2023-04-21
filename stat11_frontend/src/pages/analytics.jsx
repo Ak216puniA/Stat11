@@ -1,27 +1,15 @@
 import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Box } from "@mui/material"
 import MatchHeader from "../components/header/matchHeader"
-import Grid from "@mui/material/Grid"
-import AnalyticsCard from "../components/analytics/analyticscard"
-import PieChart from "../components/analytics/piechart"
-import BarChart from "../components/analytics/barchart"
 import { changeSideBarTabsType } from "../features/sideBar/sideBarSlice"
-import { matchteamData } from "../features/analytics/pieChartSlice"
-import { useParams } from "react-router"
+import AnalyticsContent from "../components/analytics/analyticsContent"
 
-function Analytics(props) {
-  const { match_id } = useParams()
-  const teamstate = useSelector((state) => state.pieChart.teaminfo)
+function Analytics() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(matchteamData(match_id))
     dispatch(changeSideBarTabsType("match"))
   }, [])
-
-  const teamnames = teamstate.map((x) => x.name)
-  const teamids = teamstate.map((x) => x.id)
-
   return (
     < >
       
@@ -35,34 +23,7 @@ function Analytics(props) {
         }}
       >
         <MatchHeader />
-        <Grid container >
-          <Grid item xs={6} >
-            <AnalyticsCard
-              title={teamnames[0]}
-              chart={PieChart(teamids[0])}
-            ></AnalyticsCard>
-          </Grid>
-
-          <Grid item xs={6}>
-            <AnalyticsCard
-              title={teamnames[1]}
-              chart={PieChart(teamids[1])}
-            ></AnalyticsCard>
-          </Grid>
-          <Grid item xs={6}>
-            <AnalyticsCard
-              title={teamnames[0]}
-              chart={BarChart(teamids[0])}
-            ></AnalyticsCard>
-          </Grid>
-          <Grid item xs={6}>
-            <AnalyticsCard
-              title={teamnames[1]}
-              chart={BarChart(teamids[1])}
-            ></AnalyticsCard>
-          </Grid>
-        </Grid>
-        
+        <AnalyticsContent/>
       </Box>
     </>
   )
