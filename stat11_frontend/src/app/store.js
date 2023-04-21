@@ -14,10 +14,13 @@ export const store = configureStore({
     user: userReducer,
     sideBar: sideBarReducer,
     match: matchReducer,
+    pieChart: pieChartReducer,
+    barChart: barChartReducer,
     team: teamReducer,
     player: playerReducer,
     pieChart: pieChartReducer,
     barChart: barChartReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
-});
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+})
