@@ -85,6 +85,6 @@ export const playerBackendUrl = () => {
     return `${baseBackendUrl()}player/`
 }
 
-export const bowlerBackendUrl = () => {
+export const bowlerScoreboardBackendUrl = () => {
   return `${baseBackendUrl()}bowler_scoreboard/`;
 };
