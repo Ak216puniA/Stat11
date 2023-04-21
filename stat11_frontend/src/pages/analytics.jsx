@@ -12,7 +12,6 @@ function Analytics() {
   }, [])
   return (
     < >
-      
       <Box
         component="div"
         sx={{

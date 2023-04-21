@@ -63,21 +63,6 @@ export default function BarChart(teamid) {
         display: true,
         position: "bottom",
       },
-      // title: {
-      //   display: true,
-      //   text: "Bar Chart",
-      //   color: "blue",
-      //   font: {
-      //     size: 14,
-      //   },
-      //   padding: {
-      //     top: 5,
-      //     bottom: 5,
-      //   },
-      //   responsive: true,
-      //   animation: {
-      //     animateScale: true,
-      //   }}
     },
   }
 
