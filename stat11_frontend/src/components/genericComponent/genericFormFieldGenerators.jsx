@@ -10,6 +10,7 @@ import {
   Select,
   TextField,
   Typography,
+  alpha,
 } from "@mui/material";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -99,4 +100,104 @@ export const selectFormFieldGenerator = (
 
   return (
     <FormControl
-     
+      fullWidth
+      sx={{
+        marginBottom: "1.6rem",
+      }}
+    >
+      <InputLabel>{label}</InputLabel>
+      <Select
+        required
+        multiple={multiple}
+        label={label}
+        variant="outlined"
+        value={stateVar}
+        onChange={textFieldChangeHandler(setStateVar)}
+        onFocus={onFocusHandler}
+      >
+        {menuItems}
+      </Select>
+    </FormControl>
+  );
+};
+
+export const dateTimePickerFieldGenerator = (dateLabel, dateVarChangeHandler, timeLabel, timeVarChangeHandler) => {
+  return (
+    <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box 
+      sx={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        mt: 2
+      }}
+      >
+        <DesktopDatePicker
+        label={dateLabel}
+        inputFormat="YYYY-MM-DD"
+        onChange={dateVarChangeHandler}
+        renderInput={(params) => <TextField {...params} />}
+        sx={{
+          mr: 3
+        }}
+        />
+        <TimePicker
+        label={timeLabel}
+        onChange={timeVarChangeHandler}
+        renderInput={(params) => <TextField {...params} />}
+        />
+      </Box>
+    </LocalizationProvider>
+    </>
+  )
+}
+
+export const fileFormFieldGeneator = (
+  buttonText, 
+  onChangeHandler, 
+  imageUploaded=false, 
+  uploadBgColor={
+    text: 'background.paper',
+    bg: alpha("#448791", 0.75),
+    hoverBg: alpha("#448791", 0.9)
+  }
+  ) => {
+  const bgColor = imageUploaded ? uploadBgColor['bg'] : '#EFEFEF'
+  const hoverBgColor = imageUploaded ? uploadBgColor['hoverBg'] : '#E5E5E5'
+  const textColor = imageUploaded ? uploadBgColor['text'] : 'hint.main'
+
+  return (
+    <InputLabel>
+      <Input
+          sx={{
+              display: 'none'
+          }}
+          type="file"
+          onChange={onChangeHandler}
+      />
+      <Button 
+          variant="contained" 
+          component="span"
+          sx={{
+              borderRadius: 2,
+              backgroundColor: `${bgColor}`,
+              p: 3,
+              mt: 4,
+              mb: 6,
+              width: '100%',
+              '&:hover': {
+                  backgroundColor: `${hoverBgColor}`
+              }
+          }}
+      >
+          <Typography
+          variant='body1'
+          color={textColor}
+          >
+              {buttonText}
+          </Typography>
+      </Button>
+    </InputLabel>
+  )
+}
