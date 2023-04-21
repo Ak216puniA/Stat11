@@ -1,5 +1,24 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.python-version
+/env
+.DS_Store
+dump.rdb
+=======
+>>>>>>> 3725bedd2674dc8591c7d409b600938e9192a61f
 .python-version
 /env
 .DS_Store
 dump.rdb
 /manv
+<<<<<<< HEAD
+=======
+.python-version
+/env
+.DS_Store
+dump.rdb
+>>>>>>> 01d9dff (complete analytics UI)
+=======
+>>>>>>> d809986bab5a5a8937da62ce993c40d9e38d7f66
+>>>>>>> 3725bedd2674dc8591c7d409b600938e9192a61f

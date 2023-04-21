@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { List } from '@mui/material'
-import homeBarTabs from '../../constants/homeBarTabs'
-import { useDispatch, useSelector } from 'react-redux'
-import { switchSideBarTab } from '../../features/sideBar/sideBarSlice'
-import { useNavigate } from 'react-router-dom'
-import { logoutUser } from '../../features/auth/authSlice'
-import { listButtonGenerator } from '../genericComponent/genericListGenerators'
+import React, { useEffect } from "react";
+import { List } from "@mui/material";
+import homeBarTabs from "../../constants/homeBarTabs";
+import { useDispatch, useSelector } from "react-redux";
+import { switchSideBarTab } from "../../features/sideBar/sideBarSlice";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../features/auth/authSlice";
+import { listButtonGenerator } from "../genericComponent/genericListGenerators.jsx";
 
 function HomeTabs() {
     const authState = useSelector((state) => state.auth)
@@ -63,4 +63,4 @@ function HomeTabs() {
     )
 }
 
-export default HomeTabs
+export default HomeTabs;

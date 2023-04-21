@@ -1,36 +1,36 @@
 // Hosts
 
-export const BACKEND_HOST = 'http://localhost:8000'
+export const BACKEND_HOST = "http://localhost:8000";
 
 // Backend URLs
 
 export const baseBackendUrl = () => {
-    return `${BACKEND_HOST}/api/`
-}
+  return `${BACKEND_HOST}/api/`;
+};
 
 export const loginBackendUrl = () => {
-    return `${baseBackendUrl()}auth/login/`
-}
+  return `${baseBackendUrl()}auth/login/`;
+};
 
 export const logoutBackendUrl = () => {
-    return `${baseBackendUrl()}auth/logout/`
-}
+  return `${baseBackendUrl()}auth/logout/`;
+};
 
 export const signupBackendUrl = () => {
-    return `${baseBackendUrl()}auth/signup/`
-}
+  return `${baseBackendUrl()}auth/signup/`;
+};
 
 export const userBackendUrl = () => {
-    return `${baseBackendUrl()}user/`
-}
+  return `${baseBackendUrl()}user/`;
+};
 
 export const whoAmIBackendUrl = () => {
-    return `${userBackendUrl()}who_am_i/`
-}
+  return `${userBackendUrl()}who_am_i/`;
+};
 
 export const isAuthenticatedBackendUrl = () => {
-    return `${userBackendUrl()}check_if_authenticated/`
-}
+  return `${userBackendUrl()}check_if_authenticated/`;
+};
 
 export const batterScoreboardBackendUrl = () => {
     return `${baseBackendUrl()}batter_scoreboard/`
@@ -41,8 +41,8 @@ export const bowlerScoreboardBackendUrl = () => {
 }
 
 export const teamBackendUrl = () => {
-    return `${baseBackendUrl()}team/`
-}
+  return `${baseBackendUrl()}team/`;
+};
 
 export const matchParticipatingTeamsBackendUrl = (matchId) => {
     return `${teamBackendUrl()}?match__id=${matchId}`
@@ -53,8 +53,8 @@ export const distinctTeamsBackendUrl = () => {
 }
 
 export const matchBackendUrl = () => {
-    return `${baseBackendUrl()}match/`
-}
+  return `${baseBackendUrl()}match/`;
+};
 
 export const allMatchAndTeamsDetailsUrl = (matchId) => {
     return `${matchBackendUrl()}all_match_and_team_details/?match__id=${matchId}`
@@ -89,6 +89,9 @@ export const playerBackendUrl = () => {
     return `${baseBackendUrl()}player/`
 }
 
+export const bowlerScoreboardBackendUrl = () => {
+  return `${baseBackendUrl()}bowler_scoreboard/`;
+};
 export const sortedBattersUrl = (matchId) =>{
     return `${matchBackendUrl()}sortedBatters/?match__id=${matchId}`
 }
@@ -96,6 +99,7 @@ export const sortedBattersUrl = (matchId) =>{
 export const sortedBowlersUrl = (matchId) =>{
     return `${matchBackendUrl()}sortedBowlers/?match__id=${matchId}`
 }
+
 export const typeWisePlayerBackendUrl = (type) => {
     return `${playerBackendUrl()}?type=${type}`
 }

@@ -7,19 +7,14 @@ import UpdateScore from './pages/updateScore';
 import MainScorecard from './pages/mainScorecard';
 import DisplayTeams from './pages/displayTeams';
 import Match from './pages/match';
+import Analytics from './pages/analytics';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route 
-        path={`/`} 
-        element={<Auth />} 
-        />
-        <Route 
-        path={`/auth`} 
-        element={<Auth />} 
-        />
+        <Route path={`/`} element={<Auth />} />
+        <Route path={`/auth`} element={<Auth />} />
         {/* <Route 
         path={`/displayTeams`}
         element={<DisplayTeams />}
@@ -44,8 +39,12 @@ function App() {
           path={`updateScore`}
           element={<UpdateScore />}
           />
+          <Route 
+          path={`analytics`}
+          element={<Analytics />}
+          />
         </Route>
-       
+        
         {/* <Route 
         path={`/updateScore`}
         element={<UpdateScore />}
@@ -60,7 +59,7 @@ function App() {
         /> */}
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
