@@ -52,9 +52,9 @@ export const matchBackendUrl = () => {
   return `${baseBackendUrl()}match/`;
 };
 
-// export const allMatchAndTeamsUrl = () => {
-//     return `${matchBackendUrl()}all_match_and_team_details/`
-// }
+export const allMatchAndTeamsDetailsUrl = (matchId) => {
+    return `${matchBackendUrl()}all_match_and_team_details/?match__id=${matchId}`
+}
 
 export const allMatchAndTeamsUrl = () => {
     return `${matchBackendUrl()}all_match_and_teams/`
@@ -65,20 +65,20 @@ export const allMatchAndTeamsUrl = () => {
 //     return `${matchBackendUrl()}1/participating_teams/`
 // }
 
-export const teamBattersScoreUrl = () =>{
-    return `${teamBackendUrl()}all_teams_and_batters/`
+export const teamBattersScoreUrl = (teamId) =>{
+    return `${teamBackendUrl()}all_teams_and_batters/?team__id=${teamId}`
 }
 
-export const teamBowlersScoreUrl = () =>{
-    return `${teamBackendUrl()}all_teams_and_bowlers/`
+export const teamBowlersScoreUrl = (teamId) =>{
+    return `${teamBackendUrl()}all_teams_and_bowlers/?team__id=${teamId}`
 }
 
-export const matchMVPUrl =() =>{
-    return `${matchBackendUrl()}mvp_top_three/`
+export const matchMVPUrl =(matchId) =>{
+    return `${matchBackendUrl()}mvp_top_three/?match__id=${matchId}`
 }
 
-export const matchTeamsUrl =() =>{
-    return `${matchBackendUrl()}teamList/`
+export const matchTeamsUrl =(matchId) =>{
+    return `${matchBackendUrl()}teamList/?match__id=${matchId}`
 }
 
 export const playerBackendUrl = () => {
@@ -88,3 +88,10 @@ export const playerBackendUrl = () => {
 export const bowlerScoreboardBackendUrl = () => {
   return `${baseBackendUrl()}bowler_scoreboard/`;
 };
+export const sortedBattersUrl = (matchId) =>{
+    return `${matchBackendUrl()}sortedBatters/?match__id=${matchId}`
+}
+
+export const sortedBowlersUrl = (matchId) =>{
+    return `${matchBackendUrl()}sortedBowlers/?match__id=${matchId}`
+}
